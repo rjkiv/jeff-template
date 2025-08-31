@@ -1,0 +1,11 @@
+{
+    "main": {
+        "progress_category": "your-category",
+        "mw_version": "X360/16.00.11886.00",
+        "cflags": "base",
+        "objects": {
+            "path/to/file1.cpp": "MISSING",
+            "path/to/file2.cpp": "MISSING"
+        }
+    }
+}

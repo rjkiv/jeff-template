@@ -10,7 +10,7 @@ See [Dependencies](dependencies.md) first.
 
 4. Rename `config/GAMEID` to the game's ID and modify `config/[GAMEID]/config.yml` appropriately, using [`config.example.yml`](/config/GAMEID/config.example.yml) as a reference. If the game doesn't use RELs, the `modules` list in `config.yml` can be removed.
 
-5. Update `VERSIONS` in [`configure.py`](/configure.py) with the game ID.
+5. Update `VERSIONS` in [`tools/defines_common.py`](../tools/defines_common.py) with the game ID.
 
 6. Run `python configure.py` to generate the initial `build.ninja`.
 

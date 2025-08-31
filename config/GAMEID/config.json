@@ -1,0 +1,15 @@
+{
+    "progress_categories": {
+        "sdk": "XDK Code"
+    },
+    "asflags": [],
+    "ldflags": [],
+    "cflags": {
+        "base": {
+            "flags": [
+                "/nologo",
+                "/c"
+            ]
+        }
+    }
+}

@@ -12,6 +12,8 @@ Documentation
 - [Getting Started](docs/getting_started.md)
 - [`symbols.txt`](docs/symbols.md)
 - [`splits.txt`](docs/splits.md)
+- [`config.json`](docs/config.md)
+- [`objects.json`](docs/objects.md)
 
 References
 --------
