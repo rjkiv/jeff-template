@@ -1,9 +1,9 @@
-decomp-toolkit Project Template
+jeff Project Template
 ===============================
 
-If starting a new GameCube / Wii decompilation project, this repository can be used as a scaffold.
+If starting a new Xbox 360 decompilation project, this repository can be used as a scaffold.
 
-See [decomp-toolkit](https://github.com/encounter/decomp-toolkit) for background on the concept and more information on the tooling used.
+See [jeff](https://github.com/rjkiv/jeff) for background on the concept and more information on the tooling used.
 
 Documentation
 -------------
@@ -12,23 +12,18 @@ Documentation
 - [Getting Started](docs/getting_started.md)
 - [`symbols.txt`](docs/symbols.md)
 - [`splits.txt`](docs/splits.md)
-- [GitHub Actions](docs/github_actions.md) (new!)
-
-General:
-
-- [Common BSS](docs/common_bss.md)
-- [`.comment` section](docs/comment_section.md)
 
 References
 --------
 
-- [Discord: GC/Wii Decompilation](https://discord.gg/hKx3FJJgrV) (Come to `#dtk` for help!)
+- [Discord: GC/Wii Decompilation](https://discord.gg/hKx3FJJgrV) (While not for Xbox 360, GC/Wii also uses PPC)
 - [objdiff](https://github.com/encounter/objdiff) (Local diffing tool)
 - [decomp.me](https://decomp.me) (Collaborate on matches)
 - [decomp.dev](https://decomp.dev) (Decompilation progress hub and API)
 - [wibo](https://github.com/decompals/wibo) (Minimal Win32 wrapper for Linux)
 - [sjiswrap](https://github.com/encounter/sjiswrap) (UTF-8 to Shift JIS wrapper)
 
+Although this template is meant for Xbox 360 projects, it has been forked from a GC/Wii template, and intentionally follows the same structure.
 Nearly all active GC/Wii decompilation projects use this structure, and will be useful
 for reference. A list of active GC/Wii projects can be found on [decomp.dev](https://decomp.dev).
 
@@ -38,11 +33,12 @@ Features
 - Few external dependencies: Just `python` for the generator and `ninja` for the build system. See [Dependencies](docs/dependencies.md).
 - Simple configuration: Everything lives in `config.yml`, `symbols.txt`, and `splits.txt`.
 - Multi-version support: Separate configurations for each game version, and a `configure.py --version` flag to switch between them.
-- Feature-rich analyzer: Many time-consuming tasks are automated, allowing you to focus on the decompilation itself. See [Analyzer features](https://github.com/encounter/decomp-toolkit#analyzer-features).
-- REL support: RELs each have their own `symbols.txt` and `splits.txt`, and will automatically be built and linked against the main binary.
-- No manual assembly: decomp-toolkit handles splitting the DOL into relocatable objects based on the configuration. No game assets are committed to the repository.
-- Progress calculation and integration with [decomp.dev](https://decomp.dev).
+- Feature-rich analyzer: Many time-consuming tasks are automated, allowing you to focus on the decompilation itself.
+- No manual assembly: decomp-toolkit handles splitting the XEX into relocatable objects based on the configuration. No game assets are committed to the repository.
 - Integration with [objdiff](https://github.com/encounter/objdiff) for a diffing workflow.
+
+COMING SOON(TM):
+- Progress calculation and integration with [decomp.dev](https://decomp.dev).
 - CI workflow template for GitHub Actions.
 
 Project structure
