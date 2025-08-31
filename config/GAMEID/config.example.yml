@@ -1,9 +1,5 @@
 # Path to the xex file.
-object: default.xex
-
-# (optional) If set, all object paths will be relative to this directory.
-# If not set, all object paths will be relative to the root of the project.
-object_base: orig/GAMEID
+object: orig/GAMEID/default.xex
 
 # (optional) Path to the symbols.txt file.
 # This file will be created if it does not exist.

@@ -1,5 +1,4 @@
 # See config.example.yml for documentation.
-object_base: orig/GAMEID
-object: default.xex
+object: orig/GAMEIDdefault.xex
 symbols: config/GAMEID/symbols.txt
 splits: config/GAMEID/splits.txt
