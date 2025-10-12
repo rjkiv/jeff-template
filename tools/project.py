@@ -641,6 +641,8 @@ def generate_build_ninja(
     ###
     compiler_path = compilers / "$mw_version"
 
+    transform_dep: Optional[Path] = None
+
     # MWCC
     mwcc = compiler_path / "cl.exe"
     mwcc_cmd = f"{wrapper_cmd}{mwcc} $cflags"
@@ -673,10 +675,6 @@ def generate_build_ninja(
 
     if os.name != "nt":
         transform_dep = config.tools_dir / "transform_dep.py"
-        mwcc_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
-        mwcc_sjis_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
-        mwcc_extab_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
-        mwcc_sjis_extab_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
         mwcc_implicit.append(transform_dep)
         mwcc_sjis_implicit.append(transform_dep)
         mwcc_extab_implicit.append(transform_dep)
@@ -704,6 +702,11 @@ def generate_build_ninja(
     # MSVC
     msvc = compiler_path / "cl.exe"
     msvc_cmd = f"{wrapper_cmd}{msvc} $cflags /showIncludes /Fo$out $in"
+    if transform_dep is not None:
+        msvc_cmd = (
+            "bash -lc 'set -o pipefail; "
+            f"{msvc_cmd} | $python {transform_dep}'"
+        )
 
     n.comment("MSVC build")
     n.variable("msvc_deps_prefix", "Note: including file:")
@@ -1094,15 +1097,14 @@ def generate_build_ninja(
 
         # Check if all compiler versions exist
         for mw_version in used_compiler_versions:
-            mw_path = compilers / mw_version / "mwcceppc.exe"
             msvc_path = compilers / mw_version / "cl.exe"
-            if config.compilers_path and (not os.path.exists(mw_path) and not os.path.exists(msvc_path)):
-                sys.exit(f"Compiler {mw_path} does not exist")
+            if config.compilers_path and not os.path.exists(msvc_path):
+                sys.exit(f"Compiler {msvc_path} does not exist")
 
         # Check if linker exists
-        mw_path = compilers / str(config.linker_version) / "mwldeppc.exe"
-        if config.compilers_path and not os.path.exists(mw_path):
-            sys.exit(f"Linker {mw_path} does not exist")
+        msvc_path = compilers / str(config.linker_version) / "link.exe"
+        if config.compilers_path and not os.path.exists(msvc_path):
+            sys.exit(f"Linker {msvc_path} does not exist")
 
         # Add all build steps needed before we link and after compiling objects
         write_custom_step("post-compile", "pre-compile")
