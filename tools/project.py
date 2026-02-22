@@ -7,7 +7,7 @@
 # specific to a project should be added to `configure.py`.
 #
 # If changes are made, please submit a PR to
-# https://github.com/encounter/dtk-template
+# https://github.com/rjkiv/jeff-template
 ###
 
 import io

@@ -7,7 +7,7 @@
 #   python3 tools/decompctx.py src/file.cpp
 #
 # If changes are made, please submit a PR to
-# https://github.com/encounter/dtk-template
+# https://github.com/rjkiv/jeff-template
 ###
 
 import argparse
