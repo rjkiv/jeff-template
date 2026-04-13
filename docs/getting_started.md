@@ -20,11 +20,20 @@ If all goes well, the initial `symbols.txt` and `splits.txt` should be automatic
 
 ## Using a `.map`
 
-If the game has `.map` files matching the DOL (and RELs, if applicable), they can be used to fill out `symbols.txt` and `splits.txt` automatically during the initial analysis.
+If the game has a `.map` file, it can be used to fill out `symbols.txt` and `splits.txt` automatically during the initial analysis.
 
-Add the `map` key to `config.yml`, pointing to the `.map` file from the game disc. (For example, `orig/[GAMEID]/files/main.map`.) For RELs, add a `map` key to each module in `config.yml`.
+Add the `map` key to `config.yml`, pointing to the `.map` file from the game disc (for example, `orig/[GAMEID]/main.map`).
 
-Once the initial analysis is completed, `symbols.txt` and `splits.txt` will be generated from the map information. **Remove** the `map` fields from `config.yml` to avoid conflicts.
+Once the initial analysis is completed, `symbols.txt` and `splits.txt` will be generated from the map information. **Remove** the `map` field from `config.yml` to avoid conflicts.
+
+## Using a `.pdb`
+
+Similar to a `.map` file, a `.pdb` may alternatively be used to initialize a project with symbols, splits, and source file names. The setup is analogous to that for `.map` described above, but using the `pdb` key in the `config.yml` instead.
+
+**For best results, please adhere to the following recommendations**:
+* Add the lines `symbols_known: true` and `quick_analysis: true` to `config.yml`. If analysis fails, add `detect_objects: false` and `detect_strings: false` as well
+* If you have both a `.map` and `.pdb` available, rather than trying to apply them both, analyze with the `.pdb` first; if this is unsuccessful even after applying the suggestions above, opt for the `.map` (and [open an issue](https://github.com/rjkiv/jeff/issues))
+* As mentioned above for `.map`, **remove** the `pdb` key from `config.yml` after initial analysis is successful. It is no longer needed for your project's configuration
 
 ## Post-analysis
 
