@@ -32,6 +32,7 @@ Similar to a `.map` file, a `.pdb` may alternatively be used to initialize a pro
 
 **For best results, please adhere to the following recommendations**:
 * Add the lines `symbols_known: true` and `quick_analysis: true` to `config.yml`. If analysis fails, add `detect_objects: false` and `detect_strings: false` as well
+* If your PDB analysis fails while displaying many warnings indicating that **object size lookup failed**, due to **unrecognized type records**, add `use_pdb_types: false` to your `config.yml` and retry
 * If you have both a `.map` and `.pdb` available, rather than trying to apply them both, analyze with the `.pdb` first; if this is unsuccessful even after applying the suggestions above, opt for the `.map` (and [open an issue](https://github.com/rjkiv/jeff/issues))
 * As mentioned above for `.map`, **remove** the `pdb` key from `config.yml` after initial analysis is successful. It is no longer needed for your project's configuration
 
